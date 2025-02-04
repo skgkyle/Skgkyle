@@ -53,6 +53,9 @@
             height: auto;
             border-radius: 10px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -60,11 +63,11 @@
     <h1>Will you be my Valentine? <span class="heart">❤️</span></h1>
     
     <!-- Big Image of Cat with a Flower -->
-    <div class="image-container">
-        <img src="https://pbs.twimg.com/media/FzJtqgDXsAwaHAu.jpg" alt="Cat holding a flower">
+    <div class="image-container" id="initial-image">
+        <img src="https://example.com/cat_flower.jpg" alt="Cat holding a flower">
     </div>
 
-    <div class="buttons">
+    <div class="buttons" id="button-container">
         <button class="button yes" onclick="showImage('yes')">Yes</button>
         <button class="button no" onclick="showImage('no')">No</button>
     </div>
@@ -73,20 +76,22 @@
 
     <script>
         function showImage(response) {
+            // Hide initial image and buttons
+            document.getElementById('initial-image').classList.add('hidden');
+            document.getElementById('button-container').classList.add('hidden');
+            
             const imageContainer = document.getElementById('image-container');
-            imageContainer.innerHTML = '';  // Clear previous image
+            const img = document.createElement('img');
 
+            // Display the corresponding image based on the response
             if (response === 'yes') {
-                const img = document.createElement('img');
-                img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBkMWRrDAz0H5Ix4l4eyoBChSXIz1RSYmOWQ&s';  // Replace with your image URL
+                img.src = 'https://example.com/cat_flower.jpg';  // Replace with your image URL
                 img.alt = 'Cat holding a flower';
-                imageContainer.appendChild(img);
             } else if (response === 'no') {
-                const img = document.createElement('img');
-                img.src = 'https://s.cafebazaar.ir/images/icons/com.phantomapps.wastickercats-bf9b6392-f36a-4377-80d0-4b8325602db6_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize';  // Replace with your sad cat image URL
+                img.src = 'https://example.com/sad_cat.jpg';  // Replace with your sad cat image URL
                 img.alt = 'Sad Cat';
-                imageContainer.appendChild(img);
             }
+            imageContainer.appendChild(img);
         }
     </script>
 
