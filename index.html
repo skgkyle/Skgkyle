@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Will you be my Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="flower-background">
+            <h1>Will you be my Valentine?</h1>
+            <div class="buttons">
+                <button onclick="respond('Yes')">Yes</button>
+                <button onclick="respond('No')">No</button>
+            </div>
+            <div id="cat-image" class="cat-image">
+                <img src="https://placekitten.com/400/400" alt="Cat holding a flower">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function respond(answer) {
+            const catImage = document.getElementById('cat-image');
+            if (answer === 'Yes') {
+                catImage.style.display = 'block';
+            } else {
+                catImage.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
