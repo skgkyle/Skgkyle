@@ -3,33 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Will you be my Valentine?</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 40px;
+            color: #e91e63;
+        }
+        .heart {
+            font-size: 50px;
+            color: #e91e63;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .button {
+            padding: 20px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+        }
+        .yes:hover {
+            background-color: darkgreen;
+        }
+        .no:hover {
+            background-color: darkred;
+        }
+        .image-container {
+            margin-top: 30px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="flower-background">
-            <h1>Will you be my Valentine?</h1>
-            <div class="buttons">
-                <button onclick="respond('Yes')">Yes</button>
-                <button onclick="respond('No')">No</button>
-            </div>
-            <div id="cat-image" class="cat-image">
-                <img src="https://placekitten.com/400/400" alt="Cat holding a flower">
-            </div>
-        </div>
-    </div>
+
+    <h1>Will you be my Valentine? <span class="heart">❤️</span></h1>
     
+    <div class="buttons">
+        <button class="button yes" onclick="showImage('yes')">Yes</button>
+        <button class="button no" onclick="showImage('no')">No</button>
+    </div>
+
+    <div class="image-container" id="image-container"></div>
+
     <script>
-        function respond(answer) {
-            const catImage = document.getElementById('cat-image');
-            if (answer === 'Yes') {
-                catImage.style.display = 'block';
-            } else {
-                catImage.style.display = 'none';
+        function showImage(response) {
+            const imageContainer = document.getElementById('image-container');
+            imageContainer.innerHTML = '';  // Clear previous image
+
+            if (response === 'yes') {
+                const img = document.createElement('img');
+                img.src = 'https://example.com/cat_flower.jpg';  // Replace with your image URL
+                img.alt = 'Cat holding a flower';
+                imageContainer.appendChild(img);
+            } else if (response === 'no') {
+                const img = document.createElement('img');
+                img.src = 'https://example.com/sad_cat.jpg';  // Replace with your sad cat image URL
+                img.alt = 'Sad Cat';
+                imageContainer.appendChild(img);
             }
         }
     </script>
+
 </body>
 </html>
